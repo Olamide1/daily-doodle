@@ -8,55 +8,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const playButton = document.getElementById('playButton');
     const prompt = document.getElementById('prompt');
     const shareButton = document.getElementById('shareButton');
-    const shareableLink = document.getElementById('shareableLink');
     const colorPicker = document.getElementById('colorPicker');
     const bgColorPicker = document.getElementById('bgColorPicker');
     const ctaSection = document.getElementById('ctaSection');
     const createDoodleButton = document.getElementById('createDoodleButton');
     const toggleGuideButton = document.getElementById('toggleGuideButton');
     const guideContent = document.getElementById('guideContent');
+    const socialShareButtons = document.getElementById('socialShareButtons');
+    const shareFacebook = document.getElementById('shareFacebook');
+    const shareTwitter = document.getElementById('shareTwitter');
 
     // Daily prompt generator
     const prompts = [
-        'Draw a cat in a hat',
-        'Draw a smiling sun',
-        'Draw a tree with fruit',
-        'Draw your favorite animal',
-        'Draw a house',
-        'Draw a spaceship',
-        'Draw an underwater scene',
-        'Draw a superhero',
-        'Draw a magical creature',
-        'Draw a carnival scene',
-        'Draw your dream vacation spot',
-        'Draw a robot',
-        'Draw a bustling cityscape',
-        'Draw a peaceful countryside',
-        'Draw a fantasy castle',
-        'Draw a pirate ship',
-        'Draw a science experiment',
-        'Draw your favorite meal',
-        'Draw a sports event',
-        'Draw a musical performance',
-        'Draw a beach scene',
-        'Draw a mountain landscape',
-        'Draw a futuristic city',
-        'Draw a fairytale scene',
-        'Draw a comic strip',
-        'Draw a holiday celebration',
-        'Draw a circus',
-        'Draw a historical event',
-        'Draw a pet doing something funny',
-        'Draw a garden full of flowers',
-        'Draw a scene from your favorite book',
-        'Draw a famous landmark',
-        'Draw a scene from your favorite movie',
-        'Draw a board game in action',
-        'Draw a secret hideout',
-        'Draw a mythical creature',
-        'Draw an alien planet',
-        'Draw a magical forest',
-        'Draw a character from your favorite game',
+        'Draw a cat in a hat', 'Draw a smiling sun', 'Draw a tree with fruit',
+        'Draw your favorite animal', 'Draw a house', 'Draw a spaceship',
+        'Draw an underwater scene', 'Draw a superhero', 'Draw a magical creature',
+        'Draw a carnival scene', 'Draw your dream vacation spot', 'Draw a robot',
+        'Draw a bustling cityscape', 'Draw a peaceful countryside', 'Draw a fantasy castle',
+        'Draw a pirate ship', 'Draw a science experiment', 'Draw your favorite meal',
+        'Draw a sports event', 'Draw a musical performance', 'Draw a beach scene',
+        'Draw a mountain landscape', 'Draw a futuristic city', 'Draw a fairytale scene',
+        'Draw a comic strip', 'Draw a holiday celebration', 'Draw a circus',
+        'Draw a historical event', 'Draw a pet doing something funny', 'Draw a garden full of flowers',
+        'Draw a scene from your favorite book', 'Draw a famous landmark', 'Draw a scene from your favorite movie',
+        'Draw a board game in action', 'Draw a secret hideout', 'Draw a mythical creature',
+        'Draw an alien planet', 'Draw a magical forest', 'Draw a character from your favorite game',
         'Draw an adventure story'
     ];
     prompt.textContent = prompts[new Date().getDate() % prompts.length];
@@ -250,13 +226,13 @@ document.addEventListener('DOMContentLoaded', () => {
         animating = false;
     }
 
-    // Share doodle
+    // Share doodle on social media with image and landing page link
     shareButton.addEventListener('click', () => {
-        const dataURL = canvas.toDataURL();
-        const link = `${window.location.href.split('?')[0]}?doodle=${encodeURIComponent(dataURL)}`;
-        shareableLink.value = link;
-        shareableLink.style.display = 'block';
-        document.getElementById('shareSection').style.display = 'flex'; // Display share section
+        const dataURL = canvas.toDataURL('image/png');
+        const landingPageURL = window.location.href.split('?')[0];
+        socialShareButtons.style.display = 'block';
+        shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(landingPageURL)}&picture=${encodeURIComponent(dataURL)}`;
+        shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(landingPageURL)}&media=${encodeURIComponent(dataURL)}`;
     });
 
     // Load shared doodle

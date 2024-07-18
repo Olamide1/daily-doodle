@@ -17,6 +17,7 @@
             <div id="guideContent" class="hidden">
                 <h2>Guide</h2>
                 <p>Use the tools below to create your doodle. Click 'Play Animation' to see your doodle in action!</p>
+                <p>Click 'Save as PNG' to save your doodle as an image file. You can then share this image on social media!</p>
             </div>
         </section>
         <section id="promptSection">
@@ -40,7 +41,11 @@
 
             <div id="shareSection" class="centered">
                 <button id="shareButton">Share Doodle</button>
-                <input type="text" id="shareableLink" readonly>
+                <div id="socialShareButtons" style="display: none;">
+                    <a id="shareFacebook" href="#" target="_blank">Share on Facebook</a>
+                    <a id="shareTwitter" href="#" target="_blank">Share on Twitter</a>
+                    <a id="shareWhatsApp" href="#" target="_blank">Share on WhatsApp</a>
+                </div>
             </div>
         </section>
         <div class="action-buttons">
