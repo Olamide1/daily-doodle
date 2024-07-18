@@ -206,8 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const dataURL = canvas.toDataURL('image/png');
         const landingPageURL = window.location.href.split('?')[0];
         socialShareButtons.style.display = 'block';
-        shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(landingPageURL)}&picture=${encodeURIComponent(dataURL)}`;
-        shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(landingPageURL)}&media=${encodeURIComponent(dataURL)}`;
+        shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(landingPageURL)}}`;
+        shareTwitter.href = `https://x.com/intent/tweet?url=${encodeURIComponent(landingPageURL)}}`;
         shareWhatsApp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(landingPageURL)}&media=${encodeURIComponent(dataURL)}`;
     });
 
