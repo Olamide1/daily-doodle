@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Doodle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <header id="header">
+            <h1>Daily Doodle</h1>
+            <p id="instructions">Create a doodle based on the daily prompt below!</p>
+        </header>
+        <section id="guideSection">
+            <button id="toggleGuideButton">Show Guide</button>
+            <div id="guideContent" class="hidden">
+                <h2>Guide</h2>
+                <p>Use the tools below to create your doodle. Click 'Play Animation' to see your doodle in action!</p>
+            </div>
+        </section>
+        <section id="promptSection">
+            <p id="promptContainer">
+                <strong>Today's Prompt:</strong>
+                <span id="prompt"></span>
+            </p>
+        </section>
+        <canvas id="doodleCanvas" width="700" height="500"></canvas>
+        <section id="colorAndAction">
+            <div class="color-pickers">
+                <div class="picker-container">
+                    <label for="colorPicker">Choose drawing color:</label>
+                    <input type="color" id="colorPicker" value="#000000">
+                </div>
+                <div class="picker-container">
+                    <label for="bgColorPicker">Choose background color:</label>
+                    <input type="color" id="bgColorPicker" value="#ffffff">
+                </div>
+            </div>
+
+            <div id="shareSection" class="centered">
+                <button id="shareButton">Share Doodle</button>
+                <input type="text" id="shareableLink" readonly>
+            </div>
+        </section>
+        <div class="action-buttons">
+            <button id="undoButton">Undo</button>
+            <button id="clearButton">Clear</button>
+            <button id="saveButton">Save as PNG</button>
+            <button id="saveGifButton">Save as GIF</button>
+            <button id="playButton">Play Animation</button>
+        </div>
+       
+        <section id="ctaSection" style="display:none;">
+            <h2>Want to create your own doodle?</h2>
+            <button id="createDoodleButton">Create Your Doodle</button>
+        </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gif.js.optimized/dist/gif.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
