@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const clearButton = document.getElementById('clearButton');
     const saveButton = document.getElementById('saveButton');
-    const saveGifButton = document.getElementById('saveGifButton');
     const undoButton = document.getElementById('undoButton');
     const playButton = document.getElementById('playButton');
     const prompt = document.getElementById('prompt');
@@ -17,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const socialShareButtons = document.getElementById('socialShareButtons');
     const shareFacebook = document.getElementById('shareFacebook');
     const shareTwitter = document.getElementById('shareTwitter');
+    const shareWhatsApp = document.getElementById('shareWhatsApp');
 
     // Daily prompt generator
     const prompts = [
@@ -178,31 +178,6 @@ document.addEventListener('DOMContentLoaded', () => {
         link.click();
     });
 
-    // Save drawing as GIF
-    saveGifButton.addEventListener('click', () => {
-        const gif = new GIF({
-            workers: 2,
-            quality: 10,
-            width: canvas.width,
-            height: canvas.height,
-            workerScript: 'https://cdn.jsdelivr.net/npm/gif.js.optimized/dist/gif.worker.js'
-        });
-
-        frames.forEach(frame => {
-            gif.addFrame(frame, {delay: frameInterval});
-        });
-
-        gif.on('finished', function(blob) {
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'doodle.gif';
-            link.click();
-        });
-
-        gif.render();
-    });
-
     // Play animation
     playButton.addEventListener('click', () => {
         if (frames.length === 0) return;
@@ -233,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
         socialShareButtons.style.display = 'block';
         shareFacebook.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(landingPageURL)}&picture=${encodeURIComponent(dataURL)}`;
         shareTwitter.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(landingPageURL)}&media=${encodeURIComponent(dataURL)}`;
+        shareWhatsApp.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(landingPageURL)}&media=${encodeURIComponent(dataURL)}`;
     });
 
     // Load shared doodle
